@@ -39,10 +39,8 @@ footer { margin-bottom: 20px; }
 /**
  * Lists
  */
-:not(.menu) > ul { list-style: none; }
 :not(.menu) > ul { list-style-type: none; }
 :not(.menu) > ul > li:before { content: "-";  margin-right: 9px; }
-:not(.menu) > ul:first-child { padding-left: 0; }
 
 /**
  * Header/Navigation
