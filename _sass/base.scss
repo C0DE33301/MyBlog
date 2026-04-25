@@ -73,6 +73,15 @@ pre .lineno { color: var(--base-color); padding: 5px; border-right: 1px dashed v
 code.language-plaintext.highlighter-rouge { background-color: var(--base-color); color: #000000; padding: 1px; }
 
 /**
+ * Tables
+ */
+.DC34 table, .DC34 th, .DC34 td {
+    border: 1px dashed var(--base-color);
+    border-collapse: collapse;
+    padding: 1em;
+}
+
+/**
  * Code and syntax highlighting
  */
 .lineno { color: var(--code-color-1); margin-right: 15px; }

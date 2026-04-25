@@ -8,6 +8,7 @@ github_username:  C0DE33301
 header_pages:
   - index.md
   - notes.md
+  - ctfs.md
   - about.md
   - contact.md
 
@@ -23,3 +24,6 @@ collections:
   notes:
     output: true
     permalink: /notes/:path/
+  ctfs:
+    output: true
+    permalink: /ctfs/:path/
