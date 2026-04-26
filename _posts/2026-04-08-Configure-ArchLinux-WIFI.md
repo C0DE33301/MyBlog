@@ -1,5 +1,6 @@
 ---
 layout: post
+title: Configure ArchLinux WIFI
 ---
 
 - [wpa_passphrase](#wpa_passphrase)

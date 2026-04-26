@@ -1,5 +1,6 @@
 ---
 layout: post
+title: Install FreeBSD On The RPI5
 ---
 
 - [Install FreeBSD](#install-freebsd)

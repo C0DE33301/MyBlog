@@ -1,5 +1,6 @@
 ---
 layout: post
+title: Install ArchLinux On The Raspberry Devices
 ---
 
 - [Raspberry pi 5](#raspberry-pi-5)
