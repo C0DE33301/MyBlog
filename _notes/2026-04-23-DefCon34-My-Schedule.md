@@ -3,10 +3,7 @@ layout: post
 title: DefCon34 My Schedule
 ---
 
-<head>
-    <style> table, th, td { border: 1px dashed #00FF00; padding: 1em; } </style>
-</head>
-
+# My schedule
 <table class="DC34">
     <tr>
         <th>Day/Period</th>
@@ -55,5 +52,21 @@ title: DefCon34 My Schedule
     </tr>
 </table>
 
-# Notes
-## [DDV](!https://dcddv.org/dc34-schedule)
+# My mini notes
+## Villages
+- <a href="https://dcddv.org/dc34-schedule" target="_blank">DDV</a>
+
+## Badges
+- <a href="https://github.com/rhgndf/hfsdr" target="_blank">hfsdr</a>
+- <a href="" target="_blank"></a>
+
+## Contests
+### PhreakMe
+- <a href="https://info.defcon.org/defcon34/contests/?id=41410" target="_blank">PhreakMe | info.defcon.org</a>
+- <a href="https://phreakme.com" target="_blank">PhreakMe</a>
+### Capture The Packet
+- <a href="https://info.defcon.org/defcon34/contests/?id=41393" target="_blank">Capture The Packet | info.defcon.org</a>
+- <a href="https://www.phvillage.io/capture-the-packet/" target="_blank">Capture The Packet</a>
+### TeleChallenge
+- <a href="https://info.defcon.org/defcon34/contests/?id=41390" target="_blank">TeleChallenge | info.defcon.org</a>
+- <a href="https://defcon.social/@telechallenge" target="_blank">TeleChallenge</a>
