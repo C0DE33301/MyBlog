@@ -76,15 +76,12 @@ code.language-plaintext.highlighter-rouge { background-color: var(--base-color);
 /**
  * Tables
  */
-.DC34 table, .DC34 th, .DC34 td {
+table:not(.rouge-table),  th:not(.rouge-table), td:not(.gutter.gl):not(.code) {
     border: 1px dashed var(--base-color);
     border-collapse: collapse;
     padding: 1em;
-}
-.ASB table, .ASB th, .ASB td {
-    border: 1px dashed var(--base-color);
-    border-collapse: collapse;
-    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 /**
