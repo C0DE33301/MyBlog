@@ -71,7 +71,7 @@ textarea { vertical-align: top; }
  */
 .highlight { border: 1px dashed var(--base-color); }
 pre .lineno { color: var(--base-color); padding: 5px; border-right: 1px dashed var(--base-color); }
-code.language-plaintext.highlighter-rouge { background-color: var(--base-color); color: #000000; padding: 1px; }
+code.language-plaintext.highlighter-rouge { background-color: var(--base-color); color: #000000; }
 
 /**
  * Tables
@@ -148,3 +148,15 @@ pre { background-color: var(--background-color);  border: none;  padding: 0;  ma
 .highlight .vg { color: var(--code-color-7); } /* Name.Variable.Global */
 .highlight .vi { color: var(--code-color-7); } /* Name.Variable.Instance */
 .highlight .il { color: var(--code-color-14); } /* Literal.Number.Integer.Long */
+
+.filename {
+    border: 1px dashed var(--base-color);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom: 0px;
+    margin: 0px;
+    margin-top: 1em;
+    padding-left: 1em;
+}
+
+.filename p { margin: 0px; }
