@@ -80,7 +80,7 @@ service ntpd start
 
 ### Basic Packages
 {% highlight diff linenos %}
-pkg install vim fish fastfetch
+pkg install vim fish fastfetch e2fsprogs
 {% endhighlight %}
 #### fastfetch
 ##### fish
@@ -97,6 +97,24 @@ fastfetch
 geom
 {% endhighlight %}
 ### Mount Disks
+Find the drive, `nda*`, `da*`, etc.
 {% highlight diff linenos %}
-geom
+dmesg
+
+dmesg | grep nda0
+{% endhighlight %}
+Check file system type, `ufs`, `ext4`, `fat32`, etc.
+{% highlight diff linenos %}
+gpart show
+
+gpart show nda0
+{% endhighlight %}
+{% highlight diff linenos %}
+fstyp /dev/ndap1
+
+fstyp /dev/da0s1
+{% endhighlight %}
+Mount the drive
+{% highlight diff linenos %}
+mount -t ext4fs /dev/nda0 /mnt
 {% endhighlight %}
