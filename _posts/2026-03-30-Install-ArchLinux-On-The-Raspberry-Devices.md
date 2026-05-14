@@ -15,7 +15,7 @@ title: Install ArchLinux On The Raspberry Devices
     1. Crate the **EFI System** partition
         1. Type `n` to create a new partition.
         1. Press `Enter` to accept the partition number `1`.
-        1. Type `65536` 32MiB, first sector
+        1. Press `Enter`, first sector
         1. Type `+256M`, last sector.
         1. Type `t` to set the partition type
         1. Type `1` to set the partition type to **EFI System**
@@ -48,7 +48,7 @@ title: Install ArchLinux On The Raspberry Devices
         - `ENTER` twice to accept the default first and last sector.
     1. `w`, Write the partition table and exit.
 1. [Format the partitions](#format-the-partitions)
-1. `bsdtar -xpfv ArchLinuxARM-rpi-armv7-latest.tar.gz -C /mnt/root`
+1. `bsdtar -vxpf ArchLinuxARM-rpi-armv7-latest.tar.gz -C /mnt/root`
 1. [Finishing](#finishing)
 
 # Basic set up
@@ -64,6 +64,6 @@ title: Install ArchLinux On The Raspberry Devices
 
 ## Finishing
 1. Move the boot files
-    - `mv /mnt/root/boot/* /mnt/boot`
+    - `mv -v /mnt/root/boot/* /mnt/boot`
 1. Unmount the two partitions
     - `umount /mnt/boot /mnt/root`
