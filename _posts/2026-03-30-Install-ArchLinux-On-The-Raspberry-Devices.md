@@ -8,9 +8,7 @@ title: Install ArchLinux On The Raspberry Devices
 - [Basic set up](#basic-set-up)
 
 # Raspberry pi 5
-1. Download
-    - `curl -OL http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-aarch64-latest.tar.gz`
-    - `bsdtar -xpf ArchLinuxARM-rpi-aarch64-latest.tar.gz -C /mnt/root`
+1. Download the <a href="http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-aarch64-latest.tar.gz" target="_blank">ArchLinux RPI</a>
 1. Plug SD card into a machine running aarch64 Arch Linux Arm.
 1. Partition the SD card, `fdisk /dev/sdx`
     1. Type `g` to create a new gpt partition table.
@@ -27,11 +25,12 @@ title: Install ArchLinux On The Raspberry Devices
         1. Type `Enter` to accept the default first sector.
         1. Type `Enter` to accept the default last sector.
     1. Type `w` to write the changes to the card.
+1. [Format the partitions](#format-the-partitions)
+1. `bsdtar -xpfv ArchLinuxARM-rpi-aarch64-latest.tar.gz -C /mnt/root`
+1. [Finishing](#finishing)
 
 # Raspberry pi zero 2 w
-1. Download
-    - `curl -OL http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-armv7-latest.tar.gz`
-    - `bsdtar -xpf ArchLinuxARM-rpi-armv7-latest.tar.gz -C /mnt/root`
+1. Download the <a href="http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-armv7-latest.tar.gz" target="_blank">ArchLinux RPI</a>
 1. Plug SD card into a machine running aarch64 Arch Linux Arm.
 1. Partition the SD card, `fdisk /dev/sdX`
     1. **Create W95 FAT32 (LBA) partition**
@@ -48,17 +47,22 @@ title: Install ArchLinux On The Raspberry Devices
         - `2`, second partition
         - `ENTER` twice to accept the default first and last sector.
     1. `w`, Write the partition table and exit.
+1. [Format the partitions](#format-the-partitions)
+1. `bsdtar -xpfv ArchLinuxARM-rpi-armv7-latest.tar.gz -C /mnt/root`
+1. [Finishing](#finishing)
 
 # Basic set up
-1. format the new partitions
-    1. FAT filesystem
-        - `mkfs.vfat /dev/sdX1`
-        - `mkdir /mnt/boot`
-        - `mount /dev/sdX1 /mnt/boot`
-    1. ext4 filesystem
-        - `mkfs.ext4 /dev/sdX2`
-        - `mkdir /mnt/root`
-        - `mount /dev/sdX2 /mnt/root`
+## Format the partitions
+1. FAT filesystem
+    - `mkfs.vfat /dev/sdX1`
+    - `mkdir /mnt/boot`
+    - `mount /dev/sdX1 /mnt/boot`
+1. ext4 filesystem
+    - `mkfs.ext4 /dev/sdX2`
+    - `mkdir /mnt/root`
+    - `mount /dev/sdX2 /mnt/root`
+
+## Finishing
 1. Move the boot files
     - `mv /mnt/root/boot/* /mnt/boot`
 1. Unmount the two partitions
