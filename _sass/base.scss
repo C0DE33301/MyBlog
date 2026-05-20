@@ -85,6 +85,16 @@ table:not(.rouge-table),  th:not(.rouge-table), td:not(.gutter.gl):not(.code) {
 }
 
 /**
+ * Headers
+ */
+h1 {
+    text-decoration: overline underline;
+}
+h2 {
+    text-decoration: underline;
+}
+
+/**
  * Code and syntax highlighting
  */
 .lineno { color: var(--code-color-1); margin-right: 15px; }
