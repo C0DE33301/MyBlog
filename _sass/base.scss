@@ -98,7 +98,7 @@ h2 {
  * Code and syntax highlighting
  */
 .lineno { color: var(--code-color-1); margin-right: 15px; }
-figure.highlight { margin: 5px 0; }
+figure.highlight { margin: 5px 0; padding: 1em;}
 pre { background-color: var(--background-color);  border: none;  padding: 0;  margin: 0;  overflow:auto;  font-size: $base-font-size;  color: var(--text-color);  line-height: 1.7 !important;  font-family: $base-font-family !important; }
 .highlight .hll { background-color: var(--code-color-2); }
 .highlight .c { color: var(--code-color-1); font-style: italic } /* Comment */
@@ -112,7 +112,7 @@ pre { background-color: var(--background-color);  border: none;  padding: 0;  ma
 .highlight .ge { font-style: italic } /* Generic.Emph */
 .highlight .gr { color: var(--code-color-7); } /* Generic.Error */
 .highlight .gh { color: var(--code-color-8); font-weight: bold } /* Generic.Heading */
-.highlight .gi { color: var(--code-color-9); } /* Generic.Inserted */
+.highlight .gi { color: var(--code-color-17); } /* Generic.Inserted */
 .highlight .go { color: var(--code-color-10); } /* Generic.Output */
 .highlight .gp { color: var(--code-color-11); } /* Generic.Prompt */
 .highlight .gs { font-weight: bold } /* Generic.Strong */

@@ -9,6 +9,7 @@ header_pages:
   - index.md
   - notes.md
   - ctfs.md
+  - tryhackmee.md
   - about.md
   - contact.md
 
@@ -27,3 +28,6 @@ collections:
   ctfs:
     output: true
     permalink: /ctfs/:path/
+  tryhackmee:
+    output: true
+    permalink: /tryhackmee/:path/
