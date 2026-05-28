@@ -34,3 +34,6 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 # Missing fix, ...
 gem "erb"
+
+# Maps
+gem "jekyll-leaflet"

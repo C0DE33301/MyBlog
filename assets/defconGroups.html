@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base target="_top">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Quick Start - Leaflet</title>
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		.leaflet-container {
+			height: 400px;
+			width: 600px;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	</style>	
+</head>
+<body>
+<div id="map"></div>
+<script>
+	const map = L.map('map').setView([40.005237177547585, -99.14974129880208], 3.5);
+
+	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map);
+
+	// Array of marker coordinates and popup content  
+	const markers = [  
+		{  
+			lat: 40.512436949281344,
+			lng: -79.99801149589945,
+			popupContent: "<b>DC724 | dc724.org</b><br>Hackers Guild<br>2247 Babcock Blvd, Pittsburgh, PA 15237"
+		},  
+		{  
+			lat: 32.448630840169876,
+			lng: -99.74179584825178,
+			popupContent: "<b>DC325 | dc325.org</b><br>Abilene Public Library<br>1699 S 1st St, Abilene, TX 79602"  
+		},  
+		{  
+			lat: 28.53472928921568,
+			lng: -81.38021067158927,
+			popupContent: "<b>DC407 | dc407.com</b><br>Colo Solutions<br>100 W Lucerne Cir # 201, Orlando, FL 32801"  
+		},  
+		{  
+			lat: 42.70043417244876,
+			lng: -73.90475291506645,
+			popupContent: "<b>DC518 | dc518.github.io</b><br>Guilderland Public Library<br>2228 Western Ave · Guilderland, NY"  
+		},  
+		{  
+			lat: 40.65640528058502,
+			lng: -74.34214972435784,
+			popupContent: "<b>DC908 | defcon908.org</b><br>Westfield Memorial Library<br>550 E Broad St, Westfield, NJ 07090"
+		},  
+		{  
+			lat: 41.96301182052114,
+			lng: -87.68351488946564,
+			popupContent: "<b>DC312 | dc312.org, hdcgchicago.org</b><br>Sulzer Regional Library, Chicago Public Library<br>4455 N Lincoln Ave, Chicago, IL 60625"
+		},  
+		{  
+			lat: 29.543455212265123,
+			lng: -95.22244210096785,
+			popupContent: "<b>DC281 | dc281.org</b><br>Saloon Door West<br>1231 Broadway St, Pearland, TX 77581"
+		},  
+		{  
+			lat: 29.758536369477984,
+			lng: -95.36449404785893,
+			popupContent: "<b>DC713 | dc713.org</b><br>801 Travis Building<br>801 travis street suite 1310 houston tx"
+		},  
+		{  
+			lat: 30.226087026305837,
+			lng: -95.54175269156605,
+			popupContent: "<b>DC936 | ???</b><br>Citizens Grill<br>315 Enclave Dr, at, Old Conroe Rd Ste 300 / FM1488, Conroe, TX 77384"
+		},  
+		{  
+			lat: 29.30781519202237,
+			lng: -94.79222245961745,
+			popupContent: "<b>DC409 | ???</b><br>Brewchachos Tacos & Cantina Galveston<br>2110 The Strand, Galveston, TX 77550"
+		},  
+		{  
+			lat: 30.37993619967425,
+			lng: -97.71577650741024,
+			popupContent: "<b>DC512 | ???</b><br>Celis Brewery<br>10001 Metric Blvd, Austin, TX 78758"
+		}
+	];
+
+	// Loop through the markers array and add each to the map  
+	markers.forEach(marker => {  
+		L.marker([marker.lat, marker.lng])   // Create marker with coordinates  
+			.addTo(map)                     // Add marker to the map  
+			.bindPopup(marker.popupContent); // Attach popup  
+	});
+</script>
+</body>
+</html>
