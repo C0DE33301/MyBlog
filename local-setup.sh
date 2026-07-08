@@ -1,10 +1,14 @@
-bundle config set path ~/.config/
+# 1.
+# sudo zypper install ruby-devel
 
-#sudo zypper install ruby-devel
+# 2.
+# sudo gem install bundle
 
-#bundle install
+# 3.
+# bundle config set path ~/.config
 
-#sudo gem install bundler jekyll
+# 4.
+# bundle install
 
 ## Run only 1 time
 # export PATH=$PATH:/home/kitten/.local/share/gem/ruby/3.4.0/bin
