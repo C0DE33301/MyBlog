@@ -1,14 +1,15 @@
-# 1.
+# 1. Install Ruby
 # sudo zypper install ruby-devel
+# sudo pacman -S ruby
 
-# 2.
-# sudo gem install bundle
+# 2. Set PATH
+# export PATH=$PATH:/home/USERNAME/.local/share/gem/ruby/3.4.0/bin
 
 # 3.
-# bundle config set path ~/.config
+# sudo gem install bundle
 
 # 4.
-# bundle install
+# bundle config set path ~/.config
 
-## Run only 1 time
-# export PATH=$PATH:/home/kitten/.local/share/gem/ruby/3.4.0/bin
+# 5.
+# bundle install

@@ -9,6 +9,7 @@ title: Arch Linux
 - [Basic set up](#basic-set-up)
 - [Offline Installation](#offline-installation)
 - [Online Installation](#online-install)
+- [Configure](#configure)
 
 # Raspberry pi 5
 1. Download the <a href="http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-aarch64-latest.tar.gz" target="_blank">ArchLinux RPI</a>
@@ -73,16 +74,23 @@ title: Arch Linux
 
 # Offline Installation
 ## Create local repository
+### Pick specific packages
 Only install needed packages. For this part the internet is required, use a separate computer to install the packages with internet connection.
-{% highlight diff %}
-pacman -Syw --cachedir /MAIN-LOCAL-REPO-DRIVE --dbpath /tmp base linux linux-firmware archlinux-keyring xorg-server xorg-apps xorg-xinit xf86-video-ati lightdm lightdm-THEME_NAME-greeter grub efibootmgr sudo networkmanager vi fastfetch amd-ucode
-{% endhighlight %}
 
-|Package Type|Package Names|
+|Type|Package name|
 |---|---|
-|**Display Server**|`xorg-server xorg-apps xorg-xinit`|
-|**Graphics Driver**|**VGA Compatible Controller**: `sudo pacman -S xf86-video-ati`|
-|**Display Manager**|`lightdm-gtk-greeter`<br>`lightdm-pantheon-greeter`<br>`lightdm-slick-greeter`<br>`lightdm-webkit2-greeter`<br>`lightdm-webkit-theme-litarvan`|
+|**Main packages (required)**|`base`, `linux`, `linux-firmware`, `archlinux-keyring`, `sudo`|
+|**Display Server (optional)**|`xorg-server` `xorg-apps` `xorg-xinit`|
+|**Graphics Driver**|**VGA Compatible Controller**: `xf86-video-ati`|
+|**Display Manager (required)**|**LightDM**<br>`lightdm`, `lightdm-THEME_NAME-greeter`<br><br>**lightdm-THEME_NAME-greeter**<br>`lightdm-gtk-greeter`<br>`lightdm-pantheon-greeter`<br>`lightdm-slick-greeter`<br>`lightdm-webkit2-greeter`<br>`lightdm-webkit-theme-litarvan`<br>------------------------------------------------------------------------------------------------------------------------------------------------------<br>**LY**<br>`ly`|
+|**(required)**|`grub`, `efibootmgr`|
+|**(optional)**|`amd-ucode`|
+|**Network CLI (required)**|`networkmanager`|
+|**(optional)**|`fastfetch`|
+
+{% highlight diff %}
+pacman -Syw --cachedir /MAIN-LOCAL-REPO-DRIVE --dbpath /tmp PACKAGE-NAMES
+{% endhighlight %}
 
 Create a package database
 `repo.db.tar.gz`, `repo` is the name of the repo database.
@@ -226,29 +234,30 @@ This retrieves the latest mirror list from the Arch Linux Mirror Status page.
 systemctl stop reflector.service
 {% endhighlight %}
 
-## Other, ...
+### Other, ...
 pacman -S archlinux-keyring
 
-## Install the packages
+### Install the packages
 {% highlight diff %}
-pacstrap /mnt base linux linux-firmware archlinux-keyring xorg-server xorg-apps xorg-xinit xf86-video-ati lightdm lightdm-THEME_NAME-greeter grub efibootmgr sudo networkmanager vi fastfetch amd-ucode
+pacstrap /mnt base linux linux-firmware archlinux-keyring xorg-server xorg-apps xorg-xinit xf86-video-ati grub efibootmgr sudo networkmanager vi fastfetch amd-ucode
 {% endhighlight %}
 
-## Configure, ...
-Copy the `/etc/pacman.conf`
+### Copy the `/etc/pacman.conf`
 {% highlight diff %}
 cp /etc/pacman.conf /mnt/etc/pacman.conf
 {% endhighlight %}
 
-
+### Generate mount points
 {% highlight diff %}
 genfstab -L /mnt > /mnt/etc/fstab
 {% endhighlight %}
 
+### Chroot into main mount point
 {% highlight diff %}
 arch-chroot /mnt
 {% endhighlight %}
 
+### Clock
 {% highlight diff %}
 ln -sf /usr/share/zoneinfo/America/Chicago
 {% endhighlight %}
@@ -268,45 +277,85 @@ Other, ...
 echo "LANG=en-US.UTF-8" > /etc/local.conf
 {% endhighlight %}
 
+### Enable NetworkManager
 {% highlight diff %}
 systemctl enable NetworkManager
 {% endhighlight %}
 
-Set root password
+### Set root password
 {% highlight diff %}
 passwd
 {% endhighlight %}
 
-Create a new user & set password
+### Create a new user & set password
 {% highlight diff %}
 useradd -mG wheel -s /bin/bash USERNAME
 passwd USERNAME
 {% endhighlight %}
 
+### Give normal user root permissions
 {% highlight diff %}
 visudo 
 %wheel ALL=(ALL:ALL) ALL
 {% endhighlight %}
 
+### Install grub
 {% highlight diff %}
 grub-install --target=x86_64-efi --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 {% endhighlight %}
 
+### Ends
 {% highlight diff %}
 exit
 reboot
 {% endhighlight %}
 
-### Display Manager
+# Online Installation
 
-|Display Manager|
-|---|
-|lightdm-gtk-greeter|
-|lightdm-pantheon-greeter|
-|lightdm-slick-greeter|
-|lightdm-webkit2-greeter|
-|lightdm-webkit-theme-litarvan|
+# Configure
+## Display Manager
+<table>
+    <tr>
+        <th>Graphical greeters</th>
+        <th>Console</th>
+    </tr>
+    <tr>
+        <th>
+            LightDM
+            <ul>
+                <li>lightdm-gtk-greeter</li>
+                <li>lightdm-pantheon-greeter</li>
+                <li>lightdm-slick-greeter</li>
+                <li>lightdm-webkit2-greeter</li>
+            </ul>
+        </th>
+        <th>
+            emptty
+            <img src="/assets/img/WM/emptty.png" alt="emptty">
+        </th>
+    </tr>
+    <tr>
+        <th></th>
+        <th>
+            Lemurs
+            <img src="/assets/img/WM/Lemurs.png" alt="emptty">
+        </th>
+    </tr>
+    <tr>
+        <th></th>
+        <th>
+            ly
+            <img src="/assets/img/WM/ly.png" alt="emptty">
+        </th>
+    </tr>
+</table>
+
+### LightDM
+Install packages
+{% highlight diff %}
+pacman -S lightdm lightdm-THEME_NAME-greeter
+{% endhighlight %}
 
 >/etc/lightdm/lightdm.conf
 {:.filename}
@@ -326,6 +375,62 @@ List of available greeters
 ls -l /usr/share/xgreeters
 {% endhighlight %}
 
-### Window Manager
+### Ly
+Install packages
+{% highlight diff %}
+pacman -S ly
+{% endhighlight %}
 
-# Online Installation
+Enable Ly: X, number from 1 to 6.
+{% highlight diff %}
+ly@ttyX.service
+{% endhighlight %}
+
+Disable Ly: X, number from 1 to 6.
+{% highlight diff %}
+getty@ttyX.service
+{% endhighlight %}
+
+## Window Manager
+<table>
+    <tr>
+        <th>Dynamic window managers</th>
+        <th>Tiling window managers</th>
+        <th>Stacking window managers</th>
+    </tr>
+    <tr>
+        <th>qtile</th>
+        <th>i3-wm</th>
+        <th>fluxbox</th>
+    </tr>
+    <tr>
+        <th>awesome</th>
+        <th>.</th>
+        <th>Openbox</th>
+    </tr>
+    <tr>
+        <th>xmonad</th>
+        <th>.</th>
+        <th>.</th>
+    </tr>
+</table>
+
+## Terminal
+<table>
+    <tr>
+        <th>Terminal emulators</th>
+        <th>VTE-based</th>
+    </tr>
+    <tr>
+        <th>xterm</th>
+        <th>.</th>
+    </tr>
+    <tr>
+        <th>.</th>
+        <th>.</th>
+    </tr>
+    <tr>
+        <th>.</th>
+        <th>.</th>
+    </tr>
+</table>
