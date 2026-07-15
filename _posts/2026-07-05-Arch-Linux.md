@@ -79,14 +79,16 @@ Only install needed packages. For this part the internet is required, use a sepa
 
 |Type|Package name|
 |---|---|
-|**Main packages (required)**|`base`, `linux`, `linux-firmware`, `archlinux-keyring`, `sudo`|
-|**Display Server (optional)**|`xorg-server` `xorg-apps` `xorg-xinit`|
-|**Graphics Driver**|**VGA Compatible Controller**: `xf86-video-ati`|
+|**Main packages (required)**|`base`, `linux`, `linux-firmware`, `archlinux-keyring`|
+|**Authority (required)**|`sudo`<br>------------------------------------------------------------------------------------------------------------------------------------------------------<br>`doas`|
+|**Display Server (required)**|**XOrg**<br>`xorg-server` `xorg-apps` `xorg-xinit`<br>------------------------------------------------------------------------------------------------------------------------------------------------------<br>**Wayland**<br>|
+|**Graphics Driver (required)**|**VGA Compatible Controller**: `xf86-video-ati`|
 |**Display Manager (required)**|**LightDM**<br>`lightdm`, `lightdm-THEME_NAME-greeter`<br><br>**lightdm-THEME_NAME-greeter**<br>`lightdm-gtk-greeter`<br>`lightdm-pantheon-greeter`<br>`lightdm-slick-greeter`<br>`lightdm-webkit2-greeter`<br>`lightdm-webkit-theme-litarvan`<br>------------------------------------------------------------------------------------------------------------------------------------------------------<br>**LY**<br>`ly`|
-|**(required)**|`grub`, `efibootmgr`|
-|**(optional)**|`amd-ucode`|
+|**Boot loader (required)**|**GRand Unified Bootloader** <br>`grub`|
+|**Boot Manager (optional)**|`efibootmgr`|
+|**Microcode (optional)**|**AMD**: `amd-ucode`<br> **Intel**: `intel-ucode`|
 |**Network CLI (required)**|`networkmanager`|
-|**(optional)**|`fastfetch`|
+|**System Information (optional)**|`fastfetch`|
 
 {% highlight diff %}
 pacman -Syw --cachedir /MAIN-LOCAL-REPO-DRIVE --dbpath /tmp PACKAGE-NAMES
